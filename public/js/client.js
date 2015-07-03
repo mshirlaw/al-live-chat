@@ -61,6 +61,10 @@ $(function(){
         $("#currentUsers").html("");
         for(var i = 0; i<users.length; i++){
             $("#currentUsers").append($("<p>").text(users[i]));
+            $("#currentUsers p").click(function(){
+                var name = $(this).text();
+                $("input:text").val("@" + name + " ");
+            });
         }
     });
 
