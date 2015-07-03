@@ -64,4 +64,8 @@ $(function(){
         }
     });
 
+    socket.on("display gravatar", function(url){
+        $("#gravatarImage").html("<img style=\"width:7%; padding:0px; margin:0px\"src=\""+url+"\""+">");
+    });
+
 });

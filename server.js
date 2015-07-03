@@ -4,6 +4,7 @@ var express = require("express");
 var app = express();
 var server = require("http").createServer(app);
 var io = require("socket.io")(server);
+var md5 = require("js-md5");
 var users = {};
 
 app.use(express.static("public"));
@@ -28,6 +29,10 @@ io.on("connection", function(socket){
             users[socket.user] = socket;
             updateUsers();
             io.emit("user connected", "Chatbot: New user \""+ socket.user + "\" connected.");
+            if(socket.user.indexOf("@") != -1){
+                var url = "http://www.gravatar.com/avatar/"+md5(socket.user);
+                socket.emit("display gravatar", url);
+            }
         }
     });
 
