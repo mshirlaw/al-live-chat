@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>AL Live Chat</h1>
+            <div class="panel panel-default">
+                <div class="panel-body" id="messages">
+                </div>
+            </div>
+            <form action="">
+                <div class="input-group">
+                    <input type="text" id="messageInput" class="form-control" placeholder="Type message...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Send</button>
+                </span>
+                </div>
+            </form>
+        </div>
+        <!--<script src="/socket.io/socket.io.js"></script>-->
+        <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="js/client.js"></script>
+    </body>
+</html>
