@@ -14,8 +14,6 @@ app.get("/", function(req,res){
 
 io.on("connection", function(socket){
 
-    io.emit("user connected", "Chatbot: A new user connected.");
-
     socket.on("new user", function(data, callback){
 
         if(data in users){
@@ -26,6 +24,7 @@ io.on("connection", function(socket){
             socket.user = data.toLowerCase();
             users[socket.user] = socket;
             updateUsers();
+            io.emit("user connected", "Chatbot: New user \""+ socket.user + "\" connected.");
         }
     });
 
@@ -35,7 +34,7 @@ io.on("connection", function(socket){
         }
         else {
             delete users[socket.user];
-            io.emit("user disconnected", "Chatbot: " + socket.user + " disconnected. Goodbye!");
+            io.emit("user disconnected", "Chatbot: User \"" + socket.user + "\" disconnected. Goodbye!");
             updateUsers();
         }
     });
