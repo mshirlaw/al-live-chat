@@ -16,10 +16,12 @@ io.on("connection", function(socket){
 
     socket.on("new user", function(data, callback){
 
-        if(data in users){
+        if(data.indexOf(" ") != -1){
             callback(false);
         }
-        //
+        else if(data in users){
+            callback(false);
+        }
         else{
             callback(true);
             socket.user = data.toLowerCase();
