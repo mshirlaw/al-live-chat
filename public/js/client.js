@@ -19,6 +19,17 @@ $(function(){
         $("#usernameInput").val("");
     });
 
+    $("#guestButton").click(function(){
+        event.preventDefault();
+        var number = new Date().getTime().toString();
+        number = number.substring(7);
+        socket.emit("new user", "user"+ number, function(){
+            $("#usernameContent").hide();
+            $("#errorContent").hide();
+            $("#chatContent").show();
+        });
+    });
+
     $("#chatForm").submit(function(){
         socket.emit("chat message", $("#messageInput").val());
         $("#messageInput").val("");

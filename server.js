@@ -19,6 +19,7 @@ io.on("connection", function(socket){
         if(data in users){
             callback(false);
         }
+        //
         else{
             callback(true);
             socket.user = data.toLowerCase();
