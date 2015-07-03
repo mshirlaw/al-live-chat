@@ -23,7 +23,7 @@ io.on("connection", function(socket){
         }
         else{
             callback(true);
-            socket.user = data;
+            socket.user = data.toLowerCase();
             users[socket.user] = socket;
             updateUsers();
         }

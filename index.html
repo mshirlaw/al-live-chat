@@ -5,60 +5,79 @@
         <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
     <body>
+    <div class="jumbotron">
         <div class="container">
-
-            <div class="jumbotron">
-                <h1>AL Live Chat!</h1>
-                <p>A live chat application built using NodeJS and Socket.io</p>
-            </div>
-            <div id="usernameContent">
-                <div>
-                    <form id="usernameForm" action="">
-                        <div class="input-group">
-                            <input type="text" id="usernameInput" class="form-control" placeholder="Enter a username">
+            <h1>AL Live Chat</h1>
+            <p>A live chat application built using NodeJS and Socket.io</p>
+        </div>
+    </div>
+    <div class="container">
+        <div id="usernameContent">
+            <p class="instruction-text">Welcome to the AL Live Chat Application.
+                Please enter a user name below to begin chatting.</p>
+            <div>
+                <form id="usernameForm" action="">
+                    <div class="input-group">
+                        <input type="text" id="usernameInput" class="form-control" placeholder="Enter a username">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">Save</button>
                         </span>
-                        </div>
-                    </form>
+                    </div>
+                </form>
+            </div>
+            <br/>
+        </div>
+        <div class="alert alert-danger" role="alert" id="errorContent">
+            <div>Error: Username is already taken</div>
+        </div>
+
+        <div id="chatContent">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Instructions</h4>
                 </div>
+                <ol class="instruction-text-left">
+                    <li>Type a message into the message box below</li>
+                    <li>Hit "Enter" or press "Send" to send a message to everyone</li>
+                    <li>To send a private message, type @username and then the message that you wish to send</li>
+                <ol>
             </div>
-
-            <div class="alert alert-danger" role="alert" id="errorContent">
-                <div>Error: Username is already taken</div>
+            <div class="left">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Messages</h4>
+                    </div>
+                    <div class="panel-body" id="messages"></div>
+                </div>
+                <form id= "chatForm" action="">
+                    <div class="input-group">
+                        <input type="text" id="messageInput" class="form-control" placeholder="Type a message...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Send</button>
+                        </span>
+                    </div>
+                </form>
             </div>
-
-            <div id="chatContent">
-                <div class="row">
-                    <div class="col-md-10">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Messages</h4>
-                            </div>
-                            <div class="panel-body" id="messages"></div>
-                        </div>
-                        <form id= "chatForm" action="">
-                            <div class="input-group">
-                                <input type="text" id="messageInput" class="form-control" placeholder="Type message...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit">Send</button>
-                                </span>
-                            </div>
-                        </form>
+            <div class="right">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Users</h4>
                     </div>
-                    <div class="col-md-2">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Users</h4>
-                            </div>
-                            <div class="panel-body" id="currentUsers"></div>
-                        </div>
-                    </div>
+                    <div class="panel-body" id="currentUsers"></div>
                 </div>
             </div>
         </div>
-        <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-        <script src="js/client.js"></script>
+    </div>
+    <div class="container">
+        <footer>
+            <div class="footer-text">
+                <strong><a href="https://github.com/mshirlaw/al-live-chat">Matthew Shirlaw </a></strong>
+                &#169 2015. All Rights Reserved.
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="js/client.js"></script>
     </body>
 </html>
