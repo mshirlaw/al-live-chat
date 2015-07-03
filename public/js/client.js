@@ -1,8 +1,24 @@
 $(function(){
 
     var socket = io();
+    $("#right-col").height($("#left-col").height());
 
-    $("form").submit(function(){
+    $("#usernameForm").submit(function(event){
+        event.preventDefault();
+        socket.emit("new user", $("#usernameInput").val(), function(validName){
+            if(validName){
+                $("#usernameContent").hide();
+                $("#errorContent").hide();
+                $("#chatContent").show();
+            }
+            else{
+                $("#errorContent").show();
+            }
+        });
+        $("#usernameInput").val("");
+    });
+
+    $("#chatForm").submit(function(){
         socket.emit("chat message", $("#messageInput").val());
         $("#messageInput").val("");
         return false;
@@ -19,8 +35,21 @@ $(function(){
     });
 
     socket.on("chat message", function(msg){
-        $("#messages").append($("<p>").text(msg));
-        $("#messages").scrollTop($("#messages")[0].scrollHeight);
+        if(msg.private){
+            $("#messages").append($("<p class='private'>").html("<b>"+msg.username + " (private) :</b> " + msg.msg));
+            $("#messages").scrollTop($("#messages")[0].scrollHeight);
+        }
+        else{
+            $("#messages").append($("<p>").html("<b>"+msg.username + " :</b> " + msg.msg));
+            $("#messages").scrollTop($("#messages")[0].scrollHeight);
+        }
+    });
+
+    socket.on("current users", function(users){
+        $("#currentUsers").html("");
+        for(var i = 0; i<users.length; i++){
+            $("#currentUsers").append($("<p>").text(users[i]));
+        }
     });
 
 });
