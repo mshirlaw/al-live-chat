@@ -12,7 +12,7 @@ A simple chat application written using NodeJS and Socket.io. It is designed to 
 
 ###Build/Run
 
-1. Download .zip from [github](http://github.com/mshirlaw/al-live-chat/)
+1. Download .zip from [github](https://github.com/mshirlaw/al-live-chat/archive/master.zip)
 2. Navigate to the "al-live-chat" directory
 ```
 cd al-live-chat
