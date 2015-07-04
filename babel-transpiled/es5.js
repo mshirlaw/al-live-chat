@@ -1,4 +1,4 @@
-// ES6 class which can be used to represent a User object
+// ES6 class which can be used to represent a User Object
 // Must be transpiled to ES5 using Babel
 // Use grunt-babel to transpile
 // $ cd al-live-chat
