@@ -2,6 +2,7 @@
 $(function(){
 
     var socket = io();
+    $("#usernameInput").focus();
 
     $("#usernameForm").submit(function(event){
         event.preventDefault();
@@ -37,6 +38,7 @@ $(function(){
     $("#chatForm").submit(function(){
         socket.emit("chat message", $("#messageInput").val());
         $("#messageInput").val("");
+        $("input:text").val("");
         return false;
     });
 
@@ -61,13 +63,7 @@ $(function(){
     });
 
     socket.on("chat message", function(msg){
-        if(msg.private){
-            if(Notification.permission === "granted"){
-                var notify = new Notification("Private message: ", {
-                    body: "@" + msg.username + " " + msg.msg,
-                    icon: "img/logo.jpg"
-                });
-            }
+        if(msg.private) {
             $("#messages").append($("<p class='private'>").html("<b>"+msg.username + " (private) :</b> " + msg.msg));
             $("#messages").scrollTop($("#messages")[0].scrollHeight);
         }
@@ -77,13 +73,24 @@ $(function(){
         }
     });
 
+    socket.on("notify private message", function(msg){
+        if(Notification.permission === "granted"){
+            var notify = new Notification("Private message from " + "@" + msg.username, {
+                body: msg.msg,
+                icon: "img/logo.jpg"
+            });
+        }
+    });
+
     socket.on("current users", function(users){
         $("#currentUsers").html("");
         for(var i = 0; i<users.length; i++){
-            $("#currentUsers").append($("<p>").text(users[i]));
-            $("#currentUsers p").click(function(){
+            $("#currentUsers").append($("<p>").html("<a href=\"\">"+users[i]+"</a>"));
+            $("#currentUsers p").click(function(e){
+                e.preventDefault();
                 var name = $(this).text();
                 $("input:text").val("@" + name + " ");
+                $("input:text").focus();
             });
         }
     });

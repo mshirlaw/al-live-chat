@@ -99,3 +99,8 @@ footer {
     font-size: 10pt;
     margin-top: 10px;
 }
+
+.hidden-link a, a:hover, a:visited {
+    color: #107183;
+    text-decoration: none;
+}

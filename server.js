@@ -56,6 +56,7 @@ io.on("connection", function(socket){
                 var privateMessage = msgText.substring(space + 1);
                 if(privateUser in users){
                     users[privateUser].emit("chat message", {username: socket.user, msg: privateMessage, private: true});
+                    users[privateUser].emit("notify private message", {username: socket.user, msg: privateMessage, private: true});
                     users[socket.user].emit("chat message", {username: socket.user, msg: privateMessage, private: true});
                 }
             }
