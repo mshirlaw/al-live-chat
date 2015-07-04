@@ -2,3 +2,4 @@
 .idea
 .bowercc
 node_modules
+public/bower_components

@@ -1,0 +1,20 @@
+{
+  "name": "al-live-chat",
+  "version": "1.0.0",
+  "homepage": "https://github.com/mshirlaw/al-live-chat",
+  "authors": [
+    "mshirlaw <mshirlaw@yahoo.com>"
+  ],
+  "description": "live chat application using NodeJS and Socket.io",
+  "main": "server.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
